@@ -13,7 +13,7 @@ const UserSchema = new Schema(
       unique: true,
       required: true,
       validate: {
-        validator: () => Promise.resolve(false),
+        validator: () => Promise.resolve(),
         message: "Email validation failed",
       },
     },

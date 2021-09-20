@@ -23,9 +23,11 @@ const thoughtController = {
   createThought({ body }, res) {
     Thought.create(body)
       .then(({ _id }) => {
-          return User.findOneAndUpdate(
-              { _id: params.pizzaId },
-          )
+        return User.findOneAndUpdate(
+          { _id: params.pizzaId },
+          { $push: { thoughts: _id } },
+          { new: true }
+        );
       })
       .catch((err) => res.json(err));
   },
